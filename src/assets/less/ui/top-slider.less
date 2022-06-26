@@ -1,0 +1,43 @@
+.topSlider {
+  &-dots {
+    .middle;
+    margin-bottom: 34px;
+  }
+  &-dot {
+    box-sizing: initial;
+    .wh(8px,8px);
+    border-radius: 50%;
+    border: 7px solid transparent;
+    margin-right: 7px;
+    position: relative;
+    &:after {
+      content: '';
+      .wh(8px,8px);
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: @c-bg;
+    }
+    &.active {
+      border: 7px solid @c-accent;
+      background: @c-accent;
+      &:after {
+        display: none;
+      }
+    }
+  }
+  cite {
+    color: @c-bg;
+    .bold(54px);
+    line-height: 100%;
+    min-height: 202px;
+    display: block;
+    .accent {
+      display: block;
+    }
+
+  }
+
+}

@@ -1,4 +1,4 @@
-# sky-express
+# sky-express layouting
 
 ## Project setup
 ```

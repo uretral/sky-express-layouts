@@ -1,0 +1,50 @@
+@import "../smart-grid";
+@import "../variables";
+.tabsWidget {
+  display: inline-flex;
+  flex-direction: column;
+  &-tabs {
+    button {
+      background: @c-transparent-3;
+      border-radius: 10px 10px 0 0;
+      padding: 19px 26px;
+      position: relative;
+      margin-left: -10px;
+      font-weight: bold;
+      color: @c-bg;
+      &:first-of-type {
+        margin-left: unset;
+        padding: 19px 26px 19px 16px ;
+      }
+      &:last-of-type {
+        padding: 19px 16px 19px 26px ;
+      }
+      &.active {
+        background: @c-bg;
+        padding: 19px 16px 19px 16px;
+        color: @c-accent;
+        cursor: default;
+        z-index: 1;
+      }
+    }
+
+  }
+  &-body {
+    .wh(450px,383px);
+    border-radius: 0 20px 20px 20px;
+    padding: @box-regular;
+    background: @c-bg;
+    box-shadow: @shadow-regular;
+
+    fieldset {
+
+      label, .lbl {
+        margin-top: 30px;
+        &:first-of-type {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+}
