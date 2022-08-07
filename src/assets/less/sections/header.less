@@ -5,7 +5,7 @@ header {
 
   .lg-block({
     position: relative;
-    z-index: 1;
+    z-index: 5;
   });
 }
 
@@ -31,35 +31,45 @@ header {
     .lg-block({
 
     });
+    .md-block({
+      margin-top: 8px;
+    });
     .xs-block({
       display: flex;
       width: 220px;
       height: 100%;
-      background: url("../../img/m-logo-short.svg") no-repeat center center;
+      //background: url("../../img/m-logo-short.svg") no-repeat center center;
     });
-    img {
-      .xs-block({
-        display: none;
-      });
-    }
+    /*    img {
+          .xs-block({
+            display: none;
+          });
+        }*/
   }
 
   &-tel {
     font-size: 26px;
     .bold;
     text-decoration: none;
-    color: @c-bg;
+    color: @c-text;
     text-align: right;
     margin-left: auto;
     margin-right: 90px;
     align-self: center;
 
+    &.white {
+      color: @c-bg;
+      span {
+        color: inherit;
+      }
+    }
+
     .lg-block({
       display: none;
       position: absolute;
-      top: 26px;
+      top: 33px;
       right: 20px;
-      color: @c-text;
+      color: @c-text !important;
       z-index: 5;
       margin: 0;
 
@@ -72,7 +82,7 @@ header {
 
     span {
       display: block;
-      color: @c-bg;
+      color: @c-text;
       font-size: 14px;
       font-weight: normal;
       .lg-block({
@@ -90,19 +100,45 @@ header {
     background-size: 25px;
     font-size: 18px;
     color: @c-btn-text;
+    //z-index: -1;
     .lg-block({
       position: absolute;
-      top: 22px;
-      right: 15px;
+      top: 26px;
+      right: 26px;
       width: 40px;
       height: 40px;
-      background: url("../../img/icons/m-user.svg") no-repeat 0 center;
+      background: url("../../img/icons/m-user-regular.svg") no-repeat 0 center;
       background-size: contain;
       overflow: hidden;
       text-indent: 999em;
       padding: 0;
 
     });
+    .xs-block({
+      top: 30px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+    });
+  }
+
+  &-bell {
+    .square(52px);
+    border: 1px solid @c-bg;
+    border-radius: 6px;
+     background: url("../../img/icons/personal-bell.svg") no-repeat center;
+    margin-right: 30px;
+  }
+  &-logout {
+    height: 52px;
+    border: 1px solid @c-bg;
+    border-radius: 6px;
+    font-size: 18px;
+    color: @c-bg;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 30px 0 60px;
+     background: url("../../img/icons/personal-logout.svg") no-repeat 30px center
   }
 
   &-nav {
@@ -125,6 +161,7 @@ header {
       padding-top: 120px;
       padding-bottom: 100px;
       height: unset;
+      z-index: 1;
 
       &:after {
         content: "";
@@ -158,13 +195,17 @@ header {
         display: block;
         height: 22px;
         width: 22px;
-        margin: 0 14px 0 26px;
+        margin: 0 14px 0 @fields;
+      });
+      .sm-block({
+        margin: 0 14px 0 @fields_sm;
       });
     }
 
     li {
       display: inline-flex;
       position: relative;
+      z-index: 1;
 
       .lg-block({
         display: flex;
@@ -173,10 +214,16 @@ header {
 
 
       &.parent {
-        padding-right: 26px;
-        background: url("../../img/icons/shevron-down.png") no-repeat right 7px;
-        background-size: 17px auto;
-        padding-bottom: 20px;
+
+        > a {
+          height: 31px;
+
+          padding-right: 26px;
+          padding-bottom: 6px;
+          background: url("../../img/icons/shevron-down.png") no-repeat right 7px;
+          background-size: 17px auto;
+        }
+
 
         .lg-block({
           padding: unset;
@@ -185,6 +232,12 @@ header {
         });
 
         &:hover {
+          > a {
+            color: @c-text;
+            border-bottom: 2px solid @c-accent;
+          }
+
+
           > ul {
             display: block;
 
@@ -193,12 +246,11 @@ header {
       }
 
 
-
       a {
         font-size: 18px;
-        color: @c-bg;
+        color: @c-text;
         .lg-block({
-          color: @c-text;
+          color: @c-text !important;
           display: inline-flex;
           text-decoration: underline;
         });
@@ -207,19 +259,30 @@ header {
       > ul {
         display: none;
         position: absolute;
-        left: 10px;
-        top: 24px;
+        left: -20px;
+        top: -17px;
+        border: 1px solid @c-tone-high;
+        min-width: 100%;
+
+        padding: 58px 30px 20px 25px;
+        border-radius: 0 0 20px 20px;
+        background-color: @c-bg;
+        z-index: -1;
+
 
         li {
           display: flex;
           margin-top: 10px;
           white-space: nowrap;
+
+          a {
+            font-size: 14px;
+          }
         }
       }
     }
 
   }
-
 
 }
 
@@ -227,6 +290,7 @@ header {
 #headerNav {
   display: none;
 }
+
 label[for="headerNav"] {
   display: none;
 }
@@ -235,11 +299,11 @@ label[for="headerNav"] {
 
   label[for="headerNav"] {
     position: absolute;
-    top: 22px;
-    left: 15px;
+    top: 26px;
+    left: 26px;
     width: 40px;
     height: 40px;
-    background: url("../../img/icons/m-menu.svg") no-repeat 0 center;
+    background: url("../../img/icons/m-menu-regular.svg") no-repeat 0 center;
     background-size: contain;
     overflow: hidden;
     text-indent: 999em;
@@ -261,9 +325,107 @@ label[for="headerNav"] {
     .header-tel {
       display: block;
     }
+
     .header-logo {
       display: none;
     }
   }
 
 });
+
+.xs-block({
+
+  label[for="headerNav"] {
+    top: 30px;
+    left: 20px;
+    width: 36px;
+    height: 36px;
+  }
+});
+
+
+.breadcrumbs {
+  background: @c-tone-mid;
+  font-size: 14px;
+
+  &-links {
+    .col();
+    .size(12);
+    height: 54px;
+    .middle
+  }
+
+  &-back {
+
+    .col();
+    .size(12);
+    height: 52px;
+    align-items: center;
+    margin-top: 5px;
+    display: none;
+
+    a {
+      display: inline-block;
+      padding-left: 30px;
+      background: url("../../img/icons/chevron-left.svg") no-repeat 0 center;
+      font-size: 14px;
+    }
+
+    .xs-block({
+      height: 42px;
+    });
+  }
+
+  a {
+    color: @c-tone-high;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  i {
+    display: inline-block;
+    .wh(22px, 13px);
+    margin: 0 21px;
+    background: url("../../img/icons/car.svg") no-repeat center
+  }
+
+  span {
+
+  }
+
+  .md-block({
+    &-links {
+      display: none;
+    }
+    &-back {
+      display: flex;
+    }
+  });
+
+  &-inner {
+    //.col();
+    //.size(12);
+    font-size: 14px;
+    .middle;
+    a {
+      color: @c-tone-high;
+      display: inline-block;
+      .inline-middle;
+      margin-right: 32px;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+      &:before {
+        content: '';
+        display: block;
+        .round(16px);
+        mask: url("../../img/icons/chevron-left.svg") no-repeat 0 center;
+        background-color: @c-tone-high;
+      }
+    }
+
+  }
+}

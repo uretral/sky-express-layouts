@@ -1,5 +1,5 @@
 <template>
-  <ui-menu/>
+<!--  <ui-menu/>-->
   <router-view/>
 </template>
 
@@ -9,6 +9,6 @@
 <script>
 import UiMenu from "@/components/layouts/ui-menu";
 export default {
-  components: {UiMenu}
+  // components: {UiMenu}
 }
 </script>

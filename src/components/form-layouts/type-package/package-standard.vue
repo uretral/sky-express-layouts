@@ -1,5 +1,5 @@
 <template>
-  <div class="package-custom" v-for="item in items" :key="item.id">
+  <div class="package-standard" v-for="item in items" :key="item.id">
     <input type="radio" :id="item.id" v-model="model" :value="item.id" @change="updated()"/>
     <label :for="item.id" :class="{active:item.id === model}">
       <span>{{ item.title }}</span>

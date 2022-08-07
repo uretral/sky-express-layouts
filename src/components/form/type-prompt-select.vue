@@ -1,22 +1,21 @@
 <template>
-  <div data-type="package">
+  <div data-type="promptSelect" v-click-outside="clickOutside">
 
-    <input type="checkbox" id="package"/>
-    <label class="type-package i-chevron" for="package">{{ model }}</label>
-    <div class="package-wpr">
-      <div class="package-tabs">
+    <input type="checkbox" class="promptSelect-chb" id="package" v-model="active" />
+    <label class="promptSelect-trigger " :class="active ? 'i-chevron' : 'i-chevron-bottom' "  for="package">{{ model }}</label>
+
+    <div class="promptSelect-wpr">
+      <div class="promptSelect-tabs">
         <button v-for="tab in tabs" :key="tab.name"
-                class="package-tab" :class="{active:tab.name === currentTab}"
+                class="promptSelect-tab" :class="{active:tab.name === currentTab}"
                 v-html="tab.title"
                 @click="currentTab = tab.name"
         />
       </div>
 
-      <div class="package-body">
+      <div class="promptSelect-body">
 
-        <keep-alive>
-          <component :is="currentTab" @change="updated"/>
-        </keep-alive>
+          <component :is="currentTab" @change="updated" @close="active = false"/>
 
       </div>
 
@@ -25,18 +24,20 @@
   </div>
 </template>
 
-<script lang="ts">
+<script >
 import {defineComponent} from 'vue';
 import PackageCustom from "@/components/form-layouts/type-package/package-custom.vue";
 import PackageStandard from "@/components/form-layouts/type-package/package-standard.vue";
 
+import vClickOutside from "click-outside-vue3"
 
 export default defineComponent({
-  name: 'type-package',
+  name: 'type-prompt-select',
   components: {PackageStandard, PackageCustom},
   props: ['placeholder'],
   data() {
     return {
+      active: false,
       model: '',
       currentTab: 'PackageStandard',
       tabs: [
@@ -45,10 +46,16 @@ export default defineComponent({
       ],
     }
   },
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
   methods: {
-    updated(val:{title:string}){
+    updated(val){
       console.log(val);
         this.model = val.title
+    },
+    clickOutside(){
+      this.active = false
     }
   },
   mounted() {

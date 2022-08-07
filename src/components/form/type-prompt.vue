@@ -1,27 +1,30 @@
 <template>
-  <label class="i-map-point" data-type="prompt">
-      <span class="type-prompt">
+  <label data-type="prompt" v-click-outside="clickOutside">
+    <span class="prompt-wpr">
+      <template v-if="model.length > 3">
+                <a href="javascript:" v-for="(d,k) in data" :key="k" @click="model = d">{{ d }}</a>
+      </template>
+    </span>
 
-        <template v-if="model.length > 3">
-                  <a href="javascript:" v-for="(d,k) in data" :key="k" @click="model = d">{{ d }}</a>
-        </template>
-
-      </span>
-    <span class="input-wpr">
+    <span class="placeholder i-map-point mid">
       <b>{{ placeholder }}:</b>
-       <input type="text" v-model="model"/>
+       <input type="text" class="thin" v-model="model"/>
     </span>
 
   </label>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import {defineComponent} from 'vue';
+import vClickOutside from "click-outside-vue3"
 
 export default defineComponent({
   name: 'type-prompt',
   components: {},
   props: ['placeholder'],
+  directives: {
+    clickOutside: vClickOutside.directive
+  },
   data() {
     return {
       model: '',
@@ -37,7 +40,11 @@ export default defineComponent({
       ]
     }
   },
-  methods: {},
+  methods: {
+    clickOutside() {
+      console.log('');
+    }
+  },
 });
 </script>
 

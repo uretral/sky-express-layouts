@@ -3,28 +3,25 @@
   <fieldset>
 
     <type-prompt placeholder="Откуда"/>
+    <div class="change-holder">
+      <button class="clean change"></button>
+    </div>
     <type-prompt placeholder="Куда"/>
 
     <type-package placeholder="Размер посылки"/>
 
+    <button class="accent">Рассчитать стоимость доставки</button>
+
   </fieldset>
+
+
+
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue';
+<script lang="ts" setup>
 import TypePrompt from "@/components/form/type-prompt.vue";
-import TypePackage from "@/components/form/type-package.vue";
+import TypePackage from "@/components/form/type-prompt-select.vue";
 
-export default defineComponent({
-  name: 'tab-calculator',
-  components: {TypePackage, TypePrompt},
-  data() {
-    return {}
-  },
-  methods: {},
-  mounted() {
-    console.log('mounted');
-  }
-});
+
 </script>
 

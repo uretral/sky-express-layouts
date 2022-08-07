@@ -31,10 +31,23 @@ export default {
 
 <style lang="less" scoped>
 .uimenu {
+  display: block;
   position: fixed;
-  top: 200px;
-  left: 0;
-  z-index: 1;
+  top: 10px;
+  left: 10px;
+  z-index: 100000;
+
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  background: red;
+  &:hover {
+
+    overflow: visible;
+    background: unset;
+  }
+
+
   * {
     box-sizing: border-box;
   }
@@ -52,8 +65,6 @@ export default {
   > ul {
     width: 100px;
     border: 1px solid gray;
-
-
     > li {
       display: block;
       position: relative;

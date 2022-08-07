@@ -13,7 +13,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'x-footer',
+  name: 'x-row',
   props: ['wpr','cls'],
   components: {
 
